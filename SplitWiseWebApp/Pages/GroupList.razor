@@ -1,0 +1,47 @@
+﻿@using SplitWiseWebApp.Data
+@page "/Grouplist"
+@inject IGroupService GroupService
+
+<PageTitle>Group page</PageTitle>
+<h3>Group Page</h3>
+
+@if(Groups != null)
+{
+    
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Group ID</th>
+
+        </tr>
+    </thead>
+
+    @foreach (var group in Groups)
+    {
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+
+                <td>@group.Name</td>
+
+            </tr>
+        </tbody>
+    }
+
+</table>
+
+
+@code {
+    IEnumerable<Group>? Groups;
+
+    protected async Task onInitializedAsync()
+    {
+        Groups = await GroupService.GetGroups();
+  
+    } 
+
+    
+
+}

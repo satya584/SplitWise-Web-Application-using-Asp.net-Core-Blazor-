@@ -15,7 +15,8 @@ builder.Services.AddDefaultIdentity<SplitWiseWebApplicationUser>(options => opti
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<SqlConnectionConfiguration>();  
+builder.Services.AddSingleton<SqlConnectionConfiguration>();
+builder.Services.AddScoped<IGroupService,GroupService>();
 
 var app = builder.Build();
 
