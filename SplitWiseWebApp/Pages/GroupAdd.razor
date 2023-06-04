@@ -1,0 +1,29 @@
+﻿@using SplitWiseWebApp.Data
+@page "/GroupAdd"
+@inject IGroupService GroupService
+@inject NavigationManager NavigationManager
+
+<h3>GroupAdd</h3>
+
+<EditForm  Model="@groupMember" OnValidSubmit="@GroupInsert">
+
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Add Names</label>
+        <input type="text" @bind="groupMember.GroupMembers" class="form-control" id="exampleInputPassword1">
+    </div>
+    
+    <button type="submit" class="btn btn-primary" >Submit</button>
+</EditForm>
+
+@code {
+    GroupMember groupMember = new GroupMember();
+
+    protected async Task GroupInsert()
+    {
+        groupMember.GroupID = 1;
+        await GroupService.GroupInsert(groupMember);
+        NavigationManager.NavigateTo("/");
+    }
+
+
+}

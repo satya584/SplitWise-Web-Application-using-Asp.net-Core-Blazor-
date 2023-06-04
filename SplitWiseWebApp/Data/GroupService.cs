@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace SplitWiseWebApp.Data
 {
@@ -26,7 +27,19 @@ namespace SplitWiseWebApp.Data
 
         }
 
+        public async Task<bool> GroupInsert(GroupMember groupMember)
+        {
+            using(var connection = _connectionConfiguration.CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("GroupMembers", groupMember.GroupMembers, DbType.String);
 
+                var query = "INSERT INTO GroupMemberTable (GroupMembers) VALUES (@GroupMembers)";
+                await connection.ExecuteAsync(query, new {groupMember.GroupMembers }, commandType:CommandType.Text);
+
+            }
+            return true;
+        }
 
     }
 }

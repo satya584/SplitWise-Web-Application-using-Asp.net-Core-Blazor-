@@ -18,6 +18,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<SqlConnectionConfiguration>();
 builder.Services.AddScoped<IGroupService,GroupService>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
