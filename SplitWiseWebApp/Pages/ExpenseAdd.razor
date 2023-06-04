@@ -1,0 +1,33 @@
+﻿@using SplitWiseWebApp.Data
+@page "/ExpenseAdd"
+@inject IExpenseService ExpenseService
+@inject NavigationManager NavigationManager
+
+<h3>Expense ADD</h3>
+
+<EditForm Model="@expense" OnValidSubmit="@ExpenseInsert">
+
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Add Expense Name</label>
+        <input type="text" @bind="expense.ExpenseName" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Amount</label>
+        <input type="number" @bind="expense.Amount" class="form-control" id="exampleInputPassword1">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+
+@code {
+    Expense expense = new Expense();
+
+    protected async Task ExpenseInsert()
+    {
+
+        await ExpenseService.ExpenseInsert(expense);
+        NavigationManager.NavigateTo("/");
+    }
+
+
+}

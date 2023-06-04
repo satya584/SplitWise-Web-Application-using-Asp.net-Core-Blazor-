@@ -20,7 +20,7 @@
 
     protected async Task GroupInsert()
     {
-        groupMember.GroupID = 1;
+
         await GroupService.GroupInsert(groupMember);
         NavigationManager.NavigateTo("/");
     }

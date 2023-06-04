@@ -17,6 +17,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<SqlConnectionConfiguration>();
 builder.Services.AddScoped<IGroupService,GroupService>();
+builder.Services.AddScoped<IExpenseService,ExpenseService>();
 
 
 var app = builder.Build();
