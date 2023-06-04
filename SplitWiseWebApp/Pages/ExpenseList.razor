@@ -1,5 +1,45 @@
-﻿<h3>ExpenseList</h3>
+﻿@using SplitWiseWebApp.Data
+@inject IExpenseService ExpenseService
+@page "/ExpenseList"
+
+<h3>ExpenseList</h3>
+
+
+@if (Expenses != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Group ID</th>
+
+            </tr>
+        </thead>
+
+        @foreach (var expense in Expenses)
+        {
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+
+                    <td>@expense.ExpenseName</td>
+                    <td>@expense.Amount</td>
+
+                </tr>
+            </tbody>
+        }
+
+    </table>
+
+}
 
 @code {
+    IEnumerable<Expense>? Expenses;
+
+    protected async Task onInitializedAsync()
+    {
+        Expenses = await ExpenseService.GetExpenses();
+
+    }
 
 }

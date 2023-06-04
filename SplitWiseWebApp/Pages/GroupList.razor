@@ -7,30 +7,31 @@
 
 @if(Groups != null)
 {
-    
-}
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Group ID</th>
-
-        </tr>
-    </thead>
-
-    @foreach (var group in Groups)
-    {
-        <tbody>
+    <table class="table">
+        <thead>
             <tr>
-                <th scope="row">1</th>
-
-                <td>@group.Name</td>
+                <th scope="col">#</th>
+                <th scope="col">Group ID</th>
 
             </tr>
-        </tbody>
-    }
+        </thead>
 
-</table>
+        @foreach (var group in Groups)
+        {
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+
+                    <td>@group.Name</td>
+
+                </tr>
+            </tbody>
+        }
+
+    </table>
+    
+}
+
 
 
 @code {
@@ -41,7 +42,5 @@
         Groups = await GroupService.GetGroups();
   
     } 
-
-    
 
 }
