@@ -5,7 +5,19 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <div class="col">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                </li>
+            </ul>
+        </div>
 
+     
+        
     </div>
 </div>
 
@@ -18,13 +30,37 @@
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="/Grouplist">
-                <span class="oi oi-plus" aria-hidden="true"></span> Group
+                <span class="oi oi-plus" aria-hidden="true"></span> GroupShows
             </NavLink>
         </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/GroupAdd">
+                <span class="oi oi-plus" aria-hidden="true"></span> Add New Group
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/ExpenseList">
+                <span class="oi oi-plus" aria-hidden="true"></span> Show Expenses
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/ExpenseAdd">
+                <span class="oi oi-plus" aria-hidden="true"></span> Add Expense
+            </NavLink>
+        </div>
+
     </nav>
 </div>
 
 @code {
+
+    @using Microsoft.AspNetCore.Identity
+    @using SplitWiseWebApp.Areas.Identity.Data
+    @inject SignInManager<SplitWiseWebApplicationUser> SignInManager
+
+    @inject UserManager<SplitWiseWebApplicationUser> UserManager
+
+
     private bool collapseNavMenu = true;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
